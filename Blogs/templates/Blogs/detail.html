@@ -1,0 +1,24 @@
+{% extends 'Blogs/base.html' %}
+{% block header %}
+<div class="alert alert-info" role="alert">
+    <h3>Ryoma's Blog</h3> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+    <div>
+        <p class="text-left">{{blog.created_date}}</p>
+        <h2><p class="text-center">{{blog.title}}</p></h2>
+        <h4><p class="text-center">{{blog.text}}</p></h4>
+    </div>
+    
+    <a href="{% url 'home' %}">ホームヘ</a>
+
+    <button><a class="btn" href="{% url 'edit_blog' blog.pk %}">編集</a></button>
+
+    <form method="post" action="{% url 'delete_blog' blog.pk %}">{% csrf_token %}
+        <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+    </form>
+
+{% endblock %}

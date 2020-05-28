@@ -1,0 +1,17 @@
+{% extends 'Blogs/base.html' %}
+{% block header %}
+<div class="alert alert-info" role="alert">
+    <h1>Welecome to Ryoma's Blog</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'blog_form' %}" method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">保存</button>
+</form>
+
+<div>
+    <a href="{% url 'home' %}">ホームへ</a>
+</div>
+{% endblock %}
